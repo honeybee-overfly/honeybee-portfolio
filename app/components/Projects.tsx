@@ -1,16 +1,13 @@
-import BuyButton from "./BuyButton"
-
 interface Project {
   title: string
   desc: string
   tag: string
-  price: number
 }
 
 export default function Projects() {
   const projects: Project[] = [
-    { title: "Portfolio Website", desc: "Built with Next.js and Tailwind CSS", tag: "Web", price: 5000 },
-    { title: "Art Gallery", desc: "Digital drawings and illustrations", tag: "Art", price: 3000 },
+    { title: "Portfolio Website", desc: "Built with Next.js and Tailwind CSS", tag: "Web" },
+    { title: "Car Gallery Shop", desc: "Online shop with Stripe payment integration", tag: "Shop" },
   ]
 
   return (
@@ -32,9 +29,7 @@ export default function Projects() {
                 {project.tag}
               </span>
             </div>
-            <p className="text-gray-400 text-sm mb-4">{project.desc}</p>
-            {/* ★BuyButtonコンポーネントを使う！ */}
-            <BuyButton title={project.title} price={project.price} />
+            <p className="text-gray-400 text-sm">{project.desc}</p>
           </div>
         ))}
       </div>

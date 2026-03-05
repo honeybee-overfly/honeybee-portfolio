@@ -29,13 +29,7 @@ export default function Hero() {
     <>
       <audio ref={audioRef} src="/bgm.mp3" loop />
 
-      <button
-        onClick={toggleBgm}
-        className="fixed bottom-6 right-6 z-50 bg-gray-900/90 border border-gray-600 text-white px-5 py-3 rounded-full hover:border-yellow-400 transition shadow-lg"
-      >
-        {bgmOn ? "🔊 BGM ON" : "🔇 BGM OFF"}
-      </button>
-
+      {/* ★ヒーローセクション内にBGMボタン */}
       <div className="relative w-full mb-16 rounded-3xl overflow-hidden">
         <video
           autoPlay
@@ -50,19 +44,36 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/60" />
 
         <div className="relative z-10 flex flex-col items-center text-center py-32 px-4">
-          <Image
-            src="/photo.jpg"
-            alt="Honeybee"
-            width={96}
-            height={96}
-            className="rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400"
-          />
+          <div className="relative mx-auto mb-6 w-24 h-24">
+        {/* ネオングロー枠 */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 animate-spin-slow blur-sm" />
+        {/* 画像 */}
+          <div className="relative rounded-full overflow-hidden w-24 h-24 border-2 border-yellow-400">
+            <Image
+              src="/photo.jpg"
+              alt="Honeybee"
+              fill
+              className="object-cover"
+            />
+          </div>
+      </div>
           <h1 className="text-6xl font-bold text-white mb-4">
-            Hello, I am <span className="text-yellow-400">Honeybee</span>
+            Hello, I am{" "}
+          <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(250,204,21,0.8)]">
+            Honeybee
+          </span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-lg mx-auto">
+          <p className="text-xl text-gray-300 max-w-lg mx-auto mb-8">
             Artist & Developer — passionate about art, programming, and travel.
           </p>
+
+          {/* BGMボタンをヒーロー内に配置 */}
+          <button
+            onClick={toggleBgm}
+            className="bg-gray-800/80 border border-gray-600 text-white px-6 py-3 rounded-full hover:border-yellow-400 transition"
+          >
+            {bgmOn ? "🔊 BGM ON" : "🔇 BGM OFF"}
+          </button>
         </div>
       </div>
     </>
