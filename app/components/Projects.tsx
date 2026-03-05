@@ -1,16 +1,16 @@
-// ★interfaceでオブジェクトの型を定義！
-// これがTypeScriptの強み！型があると間違いをすぐ発見できる
+import BuyButton from "./BuyButton"
+
 interface Project {
   title: string
   desc: string
   tag: string
+  price: number
 }
 
 export default function Projects() {
-  // ★データを変数として管理→追加が簡単！
   const projects: Project[] = [
-    { title: "Portfolio Website", desc: "Built with Next.js and Tailwind CSS", tag: "Web" },
-    { title: "Art Gallery", desc: "Digital drawings and illustrations", tag: "Art" },
+    { title: "Portfolio Website", desc: "Built with Next.js and Tailwind CSS", tag: "Web", price: 5000 },
+    { title: "Art Gallery", desc: "Digital drawings and illustrations", tag: "Art", price: 3000 },
   ]
 
   return (
@@ -32,7 +32,9 @@ export default function Projects() {
                 {project.tag}
               </span>
             </div>
-            <p className="text-gray-400 text-sm">{project.desc}</p>
+            <p className="text-gray-400 text-sm mb-4">{project.desc}</p>
+            {/* ★BuyButtonコンポーネントを使う！ */}
+            <BuyButton title={project.title} price={project.price} />
           </div>
         ))}
       </div>
