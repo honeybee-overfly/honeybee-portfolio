@@ -1,68 +1,41 @@
-import { FaCode, FaVideo, FaLanguage, FaInstagram, FaPenNib } from "react-icons/fa6"
+import { FaCode, FaVideo, FaLanguage, FaInstagram, FaPenNib, FaDatabase, FaFileExcel, FaPaintbrush, FaRobot, FaShopify } from "react-icons/fa6"
 
 const services = [
-  {
-    icon: <FaCode size={24} />,
-    title: "Web Development",
-    desc: "Portfolio, gallery & shop websites built with Next.js, React & Tailwind CSS.",
-    tag: "Web",
-    price: "From $80",
-  },
-  {
-    icon: <FaVideo size={24} />,
-    title: "Video Editing",
-    desc: "Professional video editing using YMM4 & AviUtl. Fast delivery.",
-    tag: "Video",
-    price: "From $20",
-  },
-  {
-    icon: <FaLanguage size={24} />,
-    title: "Japanese Translation",
-    desc: "Natural, fluent Japanese translation from English. Nuanced & accurate.",
-    tag: "Translation",
-    price: "From $10",
-  },
-  {
-    icon: <FaInstagram size={24} />,
-    title: "SNS Management",
-    desc: "Social media account management & content creation for your brand.",
-    tag: "SNS",
-    price: "From $30",
-  },
-  {
-    icon: <FaPenNib size={24} />,
-    title: "Blog Writing",
-    desc: "Japanese blog articles written naturally and engagingly for your audience.",
-    tag: "Writing",
-    price: "From $15",
-  },
+  { icon: <FaCode size={20} />, title: "Web Development", desc: "Next.js, React & Tailwind CSS.", tag: "Web", price: "From $80" },
+  { icon: <FaShopify size={20} />, title: "EC Site", desc: "Shopify / WooCommerce setup.", tag: "EC", price: "From $120" },
+  { icon: <FaRobot size={20} />, title: "LINE Bot & Automation", desc: "Custom bots & workflow automation.", tag: "Bot", price: "From $60" },
+  { icon: <FaDatabase size={20} />, title: "Data Entry & Scraping", desc: "Fast, accurate data collection.", tag: "Data", price: "From $15" },
+  { icon: <FaFileExcel size={20} />, title: "PDF & Excel Automation", desc: "Automate repetitive tasks.", tag: "Excel", price: "From $20" },
+  { icon: <FaPaintbrush size={20} />, title: "Logo & Banner Design", desc: "Clean, modern design for your brand.", tag: "Design", price: "From $25" },
+  { icon: <FaVideo size={20} />, title: "Video Editing", desc: "YMM4 & AviUtl. Fast delivery.", tag: "Video", price: "From $20" },
+  { icon: <FaLanguage size={20} />, title: "Japanese Translation", desc: "Natural, fluent translation.", tag: "Translation", price: "From $10" },
+  { icon: <FaInstagram size={20} />, title: "SNS Management", desc: "Content creation & management.", tag: "SNS", price: "From $30" },
+  { icon: <FaPenNib size={20} />, title: "Blog Writing", desc: "Japanese articles for your audience.", tag: "Writing", price: "From $15" },
 ]
 
 export default function Projects() {
   return (
-    <section className="mb-16 w-full max-w-2xl">
+    <section className="mb-16 w-full max-w-4xl">
       <h2 className="text-xs font-bold text-yellow-400 tracking-widest uppercase mb-6 text-center">
         Services
       </h2>
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {services.map((service) => (
           <div
             key={service.title}
-            className="bg-gray-900 border border-gray-800 p-6 rounded-2xl hover:border-yellow-400 transition group"
+            className="bg-gray-900 border border-gray-800 p-5 rounded-2xl hover:border-yellow-400 transition group flex flex-col gap-2"
           >
-            <div className="flex justify-between items-start mb-3">
-              <div className="flex items-center gap-3">
-                <span className="text-yellow-400">{service.icon}</span>
-                <h3 className="text-white font-bold text-lg group-hover:text-yellow-400 transition">
-                  {service.title}
-                </h3>
-              </div>
-              <span className="text-xs bg-yellow-400 text-gray-900 px-2 py-1 rounded-full font-bold">
+            <div className="flex items-center justify-between">
+              <span className="text-yellow-400">{service.icon}</span>
+              <span className="text-xs bg-yellow-400 text-gray-900 px-2 py-0.5 rounded-full font-bold">
                 {service.tag}
               </span>
             </div>
-            <p className="text-gray-400 text-sm mb-3">{service.desc}</p>
-            <p className="text-yellow-400 font-bold">{service.price}</p>
+            <h3 className="text-white font-bold text-sm group-hover:text-yellow-400 transition">
+              {service.title}
+            </h3>
+            <p className="text-gray-400 text-xs flex-1">{service.desc}</p>
+            <p className="text-yellow-400 font-bold text-sm">{service.price}</p>
           </div>
         ))}
       </div>
