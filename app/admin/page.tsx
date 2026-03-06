@@ -9,7 +9,7 @@ export default function AdminPage() {
   const [saved, setSaved] = useState<Record<string, boolean>>({})
   const [loading, setLoading] = useState<Record<string, boolean>>({})
 
-  const handleSave = async (id: string) => {
+  const handleSave = async (id: number) => {
     setLoading((prev) => ({ ...prev, [id]: true }))
     await fetch("/api/update-price", {
       method: "POST",
