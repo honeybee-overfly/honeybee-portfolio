@@ -41,7 +41,7 @@ export default function Gallery() {
         {filtered.map((drawing) => (
           <Link href={`/gallery/${drawing.id}`} key={drawing.id}>
             <div className="bg-gray-800 border border-gray-700 rounded-2xl overflow-hidden hover:border-yellow-400 transition group">
-              <div className="relative aspect-square">
+              <div className="relative aspect-video">
                 <Image
                   src={drawing.src}
                   alt={drawing.title}
