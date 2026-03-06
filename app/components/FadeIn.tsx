@@ -1,34 +1,45 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 
 interface FadeInProps {
   children: React.ReactNode
-  direction?: "up" | "fade"
+  direction?: "up" | "fade" | "left" | "right"
+  delay?: number
 }
 
-export default function FadeIn({ children, direction = "fade" }: FadeInProps) {
-  const [visible, setVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+export default function FadeIn({ 
+  children, 
+  direction = "up",
+  delay = 0 
+}: FadeInProps) {
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true) },
-      { threshold: 0.1 }
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
-
-  const base = "transition-all duration-700"
-  const styles = {
-    fade: visible ? "opacity-100" : "opacity-0",
-    up: visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
+  const variants = {
+    hidden: {
+      opacity: 0,
+      y: direction === "up" ? 40 : 0,
+      x: direction === "left" ? -40 : direction === "right" ? 40 : 0,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        delay,
+        ease: "easeOut"
+      }
+    }
   }
 
   return (
-    <div ref={ref} className={`${base} ${styles[direction]}`}>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={variants}
+    >
       {children}
-    </div>
+    </motion.div>
   )
 }
