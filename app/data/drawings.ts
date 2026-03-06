@@ -8,7 +8,7 @@ export interface Drawing {
 }
 
 export const drawings: Drawing[] = [
-  { id: 1, title: "Subaru WRX STI Sedan Gray", desc: "Dark gray Subaru WRX STI sedan in urban setting.", category: "Subaru", price: 3000, src: "/gallery/drawing1.jpg" },
+  { id: 1, title: "Subaru WRX STI Sedan Gray", desc: "Dark gray Subaru WRX STI sedan in urban setting.", category: "Subaru", price: 1000, src: "/gallery/drawing1.jpg" },
   { id: 2, title: "Subaru WRX STI Sedan Blue", desc: "Blue Subaru WRX STI sedan on race circuit.", category: "Subaru", price: 3000, src: "/gallery/drawing2.jpg" },
   { id: 3, title: "Subaru WRX STI RA-R Blue", desc: "Blue Subaru WRX STI RA-R speeding through forest road.", category: "Subaru", price: 3500, src: "/gallery/drawing3.jpg" },
   { id: 4, title: "Subaru WRX STI Hatchback Blue", desc: "Blue Subaru WRX STI hatchback with gold wheels.", category: "Subaru", price: 3000, src: "/gallery/drawing4.jpg" },
