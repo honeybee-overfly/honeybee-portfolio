@@ -5,8 +5,10 @@ import { cookies } from 'next/headers'
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
+
   const cookieStore = await cookies()
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -22,7 +24,7 @@ export async function DELETE(
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   await prisma.posts.delete({
-    where: { id: BigInt(params.id), user_id: user.id }
+    where: { id: BigInt(id), user_id: user.id }
   })
 
   return NextResponse.json({ success: true })
